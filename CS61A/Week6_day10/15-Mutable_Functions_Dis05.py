@@ -340,3 +340,63 @@ def copy_tree(t):
     5
     """
     return tree(label(t), [copy_tree(b) for b in branches(t)])
+
+# Q1.1
+def height(t):
+    """Return the height of a tree.
+
+    >>> t = tree(3, [tree(5, [tree(1)]), tree(2)])
+    >>> height(t)
+    2
+    """
+    if is_leaf(t):
+        return 0
+    return 1 + max([height(ti) for ti in branches(t)])
+
+# Q1.2
+def square_tree(t):
+    '''
+    if is_tree(t):
+        t[0] **= 2
+        for ti in branches(t):
+            square_tree(ti)
+    
+    else:
+        t **= 2
+    return t
+    '''
+    # answer:
+    sq_branches = [square_tree(branch) for branch in branches(t)]
+    return tree(label(t)**2, sq_branches)
+    # print(t)
+
+#Q1.3
+def find_path(tree, x):
+    '''
+    if is_leaf(tree):
+        return label(tree)
+    else:
+        path = find_path(branches(tree), x)
+        if not label(tree) == x:
+            return None
+    '''
+    if label(tree) == x:
+        return [label(tree)]
+    for branch in branches(tree):
+        path = find_path(branch, x)
+        if path:
+            return [label(tree)] + path
+
+#Q2.2
+def add_this_many(x, el, lst):
+    i = 0
+    for e in lst:
+        if e == x:
+            i += 1
+    while i > 0:
+        lst.append(el)
+        i -= 1
+
+#Q2.3
+def group_by(s, fn):
+
