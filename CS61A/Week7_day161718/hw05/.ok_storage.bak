@@ -1,0 +1,6 @@
+'VendingMachine-correct', (0, 70)
+'preorder-correct', (512, 70)
+'store_digits-correct', (1024, 70)
+'generate_paths-correct', (1536, 70)
+'is_bst-correct', (2048, 70)
+'Mint-correct', (2560, 70)
