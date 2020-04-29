@@ -1,0 +1,195 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 134217728 bytes for Failed to commit area from 0x0000000081e00000 to 0x0000000089e00000 of length 134217728.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (t:/workspace/open/src/hotspot/os/windows/os_windows.cpp:3269), pid=14864, tid=6756
+#
+# JRE version:  (11.0.2+9) (build )
+# Java VM: OpenJDK 64-Bit Server VM (11.0.2+9, mixed mode, aot, sharing, tiered, compressed oops, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -ea -Didea.test.cyclic.buffer.size=1048576 -javaagent:C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 2019.2\lib\idea_rt.jar=53014:C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 2019.2\bin -Dfile.encoding=UTF-8 com.intellij.rt.execution.junit.JUnitStarter -ideVersion5 -junit4 IntListTest
+
+Host: Intel(R) Core(TM) i5-7200U CPU @ 2.50GHz, 4 cores, 7G,  Windows 10 , 64 bit Build 18362 (10.0.18362.778)
+Time: Tue Apr 28 14:31:24 2020 ?D1ú±ê×?ê±?? elapsed time: 0 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000001f20cd22800):  JavaThread "Unknown thread" [_thread_in_vm, id=6756, stack(0x0000004c6d100000,0x0000004c6d200000)]
+
+Stack: [0x0000004c6d100000,0x0000004c6d200000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x63489a]
+V  [jvm.dll+0x771f9f]
+V  [jvm.dll+0x773648]
+V  [jvm.dll+0x773d03]
+V  [jvm.dll+0x25eba8]
+V  [jvm.dll+0x631d3a]
+V  [jvm.dll+0x626775]
+V  [jvm.dll+0x313ffc]
+V  [jvm.dll+0x313e82]
+V  [jvm.dll+0x3196e6]
+V  [jvm.dll+0x36579f]
+V  [jvm.dll+0x3651c0]
+V  [jvm.dll+0x2f0ff8]
+V  [jvm.dll+0x2f2156]
+V  [jvm.dll+0x74b4f7]
+V  [jvm.dll+0x74cc3f]
+V  [jvm.dll+0x372609]
+V  [jvm.dll+0x731b69]
+V  [jvm.dll+0x3e1bad]
+V  [jvm.dll+0x3e3e81]
+C  [java.exe+0x3607]
+C  [java.exe+0x1746c]
+C  [KERNEL32.DLL+0x17bd4]
+C  [ntdll.dll+0x6ce51]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x000001f20ab39180, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x000001f20cd39800 GCTaskThread "GC Thread#0" [stack: 0x0000004c6d200000,0x0000004c6d300000] [id=7888]
+  0x000001f20cd68000 ConcurrentGCThread "G1 Main Marker" [stack: 0x0000004c6d300000,0x0000004c6d400000] [id=9456]
+  0x000001f20cd69800 ConcurrentGCThread "G1 Conc#0" [stack: 0x0000004c6d400000,0x0000004c6d500000] [id=16840]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007fff16b1f5b7]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x000001f20cd20a50] Heap_lock - owner thread: 0x000001f20cd22800
+
+Heap address: 0x0000000081e00000, size: 2018 MB, Compressed Oops mode: Non-zero based: 0x0000000081e00000
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x00007ff69a050000 - 0x00007ff69a095000 	C:\Program Files\Java\jdk-11.0.2\bin\java.exe
+0x00007fff64fc0000 - 0x00007fff651b0000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007fff637c0000 - 0x00007fff63872000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007fff62c40000 - 0x00007fff62ee3000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007fff63880000 - 0x00007fff63a14000 	C:\WINDOWS\System32\USER32.dll
+0x00007fff61fd0000 - 0x00007fff61ff1000 	C:\WINDOWS\System32\win32u.dll
+0x00007fff64860000 - 0x00007fff64886000 	C:\WINDOWS\System32\GDI32.dll
+0x00007fff621b0000 - 0x00007fff62344000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007fff62f80000 - 0x00007fff6301e000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007fff62000000 - 0x00007fff620fa000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007fff536b0000 - 0x00007fff53935000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.18362.778_none_e6c6b761130d4fb8\COMCTL32.dll
+0x00007fff63e90000 - 0x00007fff63f2e000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007fff64370000 - 0x00007fff646a6000 	C:\WINDOWS\System32\combase.dll
+0x00007fff641f0000 - 0x00007fff64310000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007fff61f50000 - 0x00007fff61fd0000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007fff63780000 - 0x00007fff637ae000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007fff3a3a0000 - 0x00007fff3a3b6000 	C:\Program Files\Java\jdk-11.0.2\bin\vcruntime140.dll
+0x00007fff373e0000 - 0x00007fff3748a000 	C:\Program Files\Java\jdk-11.0.2\bin\msvcp140.dll
+0x00007fff16820000 - 0x00007fff17343000 	C:\Program Files\Java\jdk-11.0.2\bin\server\jvm.dll
+0x00007fff64e50000 - 0x00007fff64ef3000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007fff64a40000 - 0x00007fff64ad7000 	C:\WINDOWS\System32\sechost.dll
+0x00007fff646b0000 - 0x00007fff646b8000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007fff5fff0000 - 0x00007fff60014000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007fff600a0000 - 0x00007fff600a9000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007fff64790000 - 0x00007fff647ff000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007fff56950000 - 0x00007fff5695a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007fff5ffc0000 - 0x00007fff5ffed000 	C:\WINDOWS\SYSTEM32\WINMMBASE.dll
+0x00007fff63020000 - 0x00007fff6306a000 	C:\WINDOWS\System32\cfgmgr32.dll
+0x00007fff61e90000 - 0x00007fff61ea1000 	C:\WINDOWS\System32\kernel.appcore.dll
+0x00007fff39240000 - 0x00007fff39251000 	C:\Program Files\Java\jdk-11.0.2\bin\verify.dll
+0x00007fff55210000 - 0x00007fff55404000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007fff4b950000 - 0x00007fff4b97a000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007fff39190000 - 0x00007fff391b8000 	C:\Program Files\Java\jdk-11.0.2\bin\java.dll
+0x00007fff387e0000 - 0x00007fff3880f000 	C:\Program Files\Java\jdk-11.0.2\bin\instrument.dll
+0x00007fff391f0000 - 0x00007fff39206000 	C:\Program Files\Java\jdk-11.0.2\bin\zip.dll
+0x00007fff5e7c0000 - 0x00007fff5e7ca000 	C:\Program Files\Java\jdk-11.0.2\bin\jimage.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Program Files\Java\jdk-11.0.2\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.18362.778_none_e6c6b761130d4fb8;C:\Program Files\Java\jdk-11.0.2\bin\server
+
+VM Arguments:
+jvm_args: -ea -Didea.test.cyclic.buffer.size=1048576 -javaagent:C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 2019.2\lib\idea_rt.jar=53014:C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 2019.2\bin -Dfile.encoding=UTF-8 
+java_command: com.intellij.rt.execution.junit.JUnitStarter -ideVersion5 -junit4 IntListTest
+java_class_path (initial): C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 2019.2\lib\idea_rt.jar;C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 2019.2\plugins\junit\lib\junit-rt.jar;C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 2019.2\plugins\junit\lib\junit5-rt.jar;C:\Users\Xiakai Pan\Desktop\CS\UCB_CS\CS61B_SP2019\week3_day28..33\lab3\out\production\lab3;C:\Users\Xiakai Pan\Desktop\CS\UCB_CS\CS61B_SP2019\CS61B-SP19\library-sp19\javalib\stdlib-package.jar;C:\Users\Xiakai Pan\Desktop\CS\UCB_CS\CS61B_SP2019\CS61B-SP19\library-sp19\javalib\hamcrest-core-1.3.jar;C:\Users\Xiakai Pan\Desktop\CS\UCB_CS\CS61B_SP2019\CS61B-SP19\library-sp19\javalib\junit-4.12.jar;C:\Users\Xiakai Pan\Desktop\CS\UCB_CS\CS61B_SP2019\CS61B-SP19\library-sp19\javalib\jh61b.jar;C:\Users\Xiakai Pan\Desktop\CS\UCB_CS\CS61B_SP2019\CS61B-SP19\library-sp19\javalib\algs4.jar;C:\Users\Xiakai Pan\Desktop\CS\UCB_CS\CS61B_SP2019\CS61B-SP19\library-sp19\javalib\stdlib.jar;C:\Users\Xiakai Pan\Desktop\CS\UCB_CS\CS61B_SP2019\CS61B-SP19\library-sp19\javalib\xchart-3.5.1.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 3                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 1                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 4                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 134217728                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 2116026368                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5830092                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122914074                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122914074                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     bool UseCompressedClassPointers               = true                                 {lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                                 {lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+PATH=C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 2019.2\jbr\\bin;C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 2019.2\jbr\\bin\server;C:\Program Files\Git\usr\local\bin;C:\Program Files\Java\jdk-11.0.2\bin;C:\Program Files\Git\bin;C:\Users\Xiakai Pan\introcs\java\bin;C:\MentorGraphics\9.5PADS\SDD_HOME\common\win32\bin;C:\MentorGraphics\9.5PADS\SDD_HOME\common\win32\lib;C:\MentorGraphics\9.5PADS\MGC_HOME.ixn\bin;C:\MentorGraphics\9.5PADS\MGC_HOME.ixn\lib;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\Git\cmd;C:\Users\Xiakai Pan\AppData\Local\Microsoft\WindowsApps;C:\Program Files\cmder\bin;C:\ProgramData\Anaconda3\Scripts;C:\ProgramData\Anaconda3;C:\Users\Xiakai Pan\AppData\Local\Microsoft\WindowsApps;C:\mingw64\bin;C:\Users\Xiakai Pan\AppData\Local\GitHubDesktop\bin;D:\学习\计算机\计算机专业课程\Nand2tetris\nand2tetris\tools;C:\iverilog\bin;C:\iverilog\gtkwave\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.3\bin;C:\Program Files\JetBrains\CLion 2019.3.4\bin;C:\intelFPGA\17.1\modelsim_ase\win32aloem;?C:\Program Files (x86)\Java\jre1.8.0_241\bin;C:\Users\Xiakai Pan\AppData\Local\Programs\Microsoft VS Code\bin;C:\ProgramData\Anaconda3\Scripts\jupyter.exe;C:\Program Files\Java\jdk-11.0.2\bin;C:\Users\Xiakai Pan\.babun;C:\ProgramData\Anaconda3\Library\bin;C:\Program Files\WinRAR;C:\Program Files\Bandizip\
+USERNAME=Xiakai Pan
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 142 Stepping 9, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10 , 64 bit Build 18362 (10.0.18362.778)
+
+CPU:total 4 (initial active 4) (2 cores per cpu, 2 threads per core) family 6 model 142 stepping 9, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx, fma
+
+Memory: 4k page, system-wide physical 8069M (409M free)
+TotalPageFile size 8069M (AvailPageFile size 105M)
+current process WorkingSet (physical memory assigned to process): 10M, peak: 10M
+current process commit charge ("private bytes"): 51M, peak: 179M
+
+vm_info: OpenJDK 64-Bit Server VM (11.0.2+9) for windows-amd64 JRE (11.0.2+9), built on Jan 18 2019 05:23:22 by "mach5one" with MS VC++ 15.5 (VS2017)
+
+END.
