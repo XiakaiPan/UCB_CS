@@ -25,4 +25,14 @@ public class SList {
         }
         return sentinel.next.item;
     }
+
+    public static void main(String[] args) {
+        SList s1 = new SList();
+        SList s2 = new SList();
+        s1.insertFront(1);
+        s1.insertFront(2);
+        System.out.println("On a correct implementation: ");
+        System.out.println("These should not be equal: " + s1.getFront() + " " + s2.getFront());
+        System.out.println(s1.getFront() + " == 1");
+    }
 }
