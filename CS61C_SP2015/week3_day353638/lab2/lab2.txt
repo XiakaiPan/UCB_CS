@@ -1,0 +1,3 @@
+Lab2: Advanced C, Memory Management. 
+The third lab about memory management using Valgrind is not avaliable.
+The Valgrind website is: http://valgrind.org/
