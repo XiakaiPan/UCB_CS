@@ -1,0 +1,2 @@
+First string: Hello, printf1;
+Sencod string: Hello, printf2;
