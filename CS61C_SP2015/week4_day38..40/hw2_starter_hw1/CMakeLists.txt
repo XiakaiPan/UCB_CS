@@ -6,7 +6,6 @@ set(CMAKE_C_STANDARD 11)
 include_directories(.)
 
 add_executable(hw2_starter_hw1
-        bear_git.c
         beargit.c
         beargit.h
         cunittests.c

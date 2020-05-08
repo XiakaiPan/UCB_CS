@@ -2,7 +2,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <unistd.h>
-#include <CUnit/Basic.h>
+#include <CUnit/Headers/Basic.h> // CUnit cannot be installed and used in Windows.
 #include "beargit.h"
 #include "util.h"
 
@@ -19,11 +19,11 @@
  */
 int init_suite(void)
 {
-    // preps to run tests by deleting the .beargit directory if it exists
-    fs_force_rm_beargit_dir();
-    unlink("TEST_STDOUT");
-    unlink("TEST_STDERR");
-    return 0;
+   // preps to run tests by deleting the .beargit directory if it exists
+   fs_force_rm_beargit_dir();
+   unlink("TEST_STDOUT");
+   unlink("TEST_STDERR");
+   return 0;
 }
 
 /* You can also delete leftover files after a test suite runs, but there's
@@ -31,7 +31,7 @@ int init_suite(void)
  */
 int clean_suite(void)
 {
-    return 0;
+   return 0;
 }
 
 /* Simple test of fread().
@@ -41,80 +41,84 @@ int clean_suite(void)
  */
 void simple_sample_test(void)
 {
-    // This is a very basic test. Your tests should likely do more than this.
-    // We suggest checking the outputs of printfs/fprintfs to both stdout
-    // and stderr. To make this convenient for you, the tester replaces
-    // printf and fprintf with copies that write data to a file for you
-    // to access. To access all output written to stdout, you can read 
-    // from the "TEST_STDOUT" file. To access all output written to stderr,
-    // you can read from the "TEST_STDERR" file.
-    int retval;
-    retval = beargit_init();
-    CU_ASSERT(0==retval);
-    retval = beargit_add("asdf.txt");
-    CU_ASSERT(0==retval);
+   // This is a very basic test. Your tests should likely do more than this.
+   // We suggest checking the outputs of printfs/fprintfs to both stdout
+   // and stderr. To make this convenient for you, the tester replaces
+   // printf and fprintf with copies that write data to a file for you
+   // to access. To access all output written to stdout, you can read
+   // from the "TEST_STDOUT" file. To access all output written to stderr,
+   // you can read from the "TEST_STDERR" file.
+   int retval;
+   retval = beargit_init();
+   CU_ASSERT(0 == retval);
+   retval = beargit_add("asdf.txt");
+   CU_ASSERT(0 == retval);
 }
 
-struct commit {
-  char msg[MSG_SIZE];
-  struct commit* next;
+struct commit
+{
+   char msg[MSG_SIZE];
+   struct commit *next;
 };
 
+void free_commit_list(struct commit **commit_list)
+{
+   if (*commit_list)
+   {
+      free_commit_list(&((*commit_list)->next));
+      free(*commit_list);
+   }
 
-void free_commit_list(struct commit** commit_list) {
-  if (*commit_list) {
-    free_commit_list(&((*commit_list)->next));
-    free(*commit_list);
-  }
-
-  *commit_list = NULL;
+   *commit_list = NULL;
 }
 
-void run_commit(struct commit** commit_list, const char* msg) {
-    int retval = beargit_commit(msg);
-    CU_ASSERT(0==retval);
+void run_commit(struct commit **commit_list, const char *msg)
+{
+   int retval = beargit_commit(msg);
+   CU_ASSERT(0 == retval);
 
-    struct commit* new_commit = (struct commit*)malloc(sizeof(struct commit));
-    new_commit->next = *commit_list;
-    strcpy(new_commit->msg, msg);
-    *commit_list = new_commit;
+   struct commit *new_commit = (struct commit *)malloc(sizeof(struct commit));
+   new_commit->next = *commit_list;
+   strcpy(new_commit->msg, msg);
+   *commit_list = new_commit;
 }
 
 void simple_log_test(void)
 {
-    struct commit* commit_list = NULL;
-    int retval;
-    retval = beargit_init();
-    CU_ASSERT(0==retval);
-    FILE* asdf = fopen("asdf.txt", "w");
-    fclose(asdf);
-    retval = beargit_add("asdf.txt");
-    CU_ASSERT(0==retval);
-    run_commit(&commit_list, "GO BEARS!1");
-    run_commit(&commit_list, "GO BEARS!2");
-    run_commit(&commit_list, "GO BEARS!3");
+   struct commit *commit_list = NULL;
+   int retval;
+   retval = beargit_init();
+   CU_ASSERT(0 == retval);
+   FILE *asdf = fopen("asdf.txt", "w");
+   fclose(asdf);
+   retval = beargit_add("asdf.txt");
+   CU_ASSERT(0 == retval);
+   run_commit(&commit_list, "GO BEARS!1");
+   run_commit(&commit_list, "GO BEARS!2");
+   run_commit(&commit_list, "GO BEARS!3");
 
-    retval = beargit_log();
-    CU_ASSERT(0==retval);
+   retval = beargit_log();
+   CU_ASSERT(0 == retval);
 
-    struct commit* cur_commit = commit_list;
+   struct commit *cur_commit = commit_list;
 
-    const int LINE_SIZE = 512;
-    char line[LINE_SIZE];
+   const int LINE_SIZE = 512;
+   char line[LINE_SIZE];
 
-    FILE* fstdout = fopen("TEST_STDOUT", "r");
-    CU_ASSERT_PTR_NOT_NULL(fstdout);
+   FILE *fstdout = fopen("TEST_STDOUT", "r");
+   CU_ASSERT_PTR_NOT_NULL(fstdout);
 
-    while (cur_commit != NULL) {
+   while (cur_commit != NULL)
+   {
       char refline[LINE_SIZE];
 
       // First line is empty
       CU_ASSERT_PTR_NOT_NULL(fgets(line, LINE_SIZE, fstdout));
-      CU_ASSERT(!strcmp(line,"\n"));
+      CU_ASSERT(!strcmp(line, "\n"));
 
       // Second line is commit -- don't check the ID.
       CU_ASSERT_PTR_NOT_NULL(fgets(line, LINE_SIZE, fstdout));
-      CU_ASSERT(!strncmp(line,"commit", strlen("commit")));
+      CU_ASSERT(!strncmp(line, "commit", strlen("commit")));
 
       // Third line is msg
       sprintf(refline, "    %s\n", cur_commit->msg);
@@ -122,19 +126,19 @@ void simple_log_test(void)
       CU_ASSERT_STRING_EQUAL(line, refline);
 
       cur_commit = cur_commit->next;
-    }
+   }
 
-    // Last line is empty
-    CU_ASSERT_PTR_NOT_NULL(fgets(line, LINE_SIZE, fstdout));
-    CU_ASSERT(!strcmp(line,"\n"));
+   // Last line is empty
+   CU_ASSERT_PTR_NOT_NULL(fgets(line, LINE_SIZE, fstdout));
+   CU_ASSERT(!strcmp(line, "\n"));
 
-    CU_ASSERT_PTR_NULL(fgets(line, LINE_SIZE, fstdout));
+   CU_ASSERT_PTR_NULL(fgets(line, LINE_SIZE, fstdout));
 
-    // It's the end of output
-    CU_ASSERT(feof(fstdout));
-    fclose(fstdout);
+   // It's the end of output
+   CU_ASSERT(feof(fstdout));
+   fclose(fstdout);
 
-    free_commit_list(&commit_list);
+   free_commit_list(&commit_list);
 }
 
 /* The main() function for setting up and running the tests.
@@ -152,7 +156,8 @@ int cunittester()
 
    /* add a suite to the registry */
    pSuite = CU_add_suite("Suite_1", init_suite, clean_suite);
-   if (NULL == pSuite) {
+   if (NULL == pSuite)
+   {
       CU_cleanup_registry();
       return CU_get_error();
    }
@@ -165,7 +170,8 @@ int cunittester()
    }
 
    pSuite2 = CU_add_suite("Suite_2", init_suite, clean_suite);
-   if (NULL == pSuite2) {
+   if (NULL == pSuite2)
+   {
       CU_cleanup_registry();
       return CU_get_error();
    }
@@ -183,4 +189,3 @@ int cunittester()
    CU_cleanup_registry();
    return CU_get_error();
 }
-
