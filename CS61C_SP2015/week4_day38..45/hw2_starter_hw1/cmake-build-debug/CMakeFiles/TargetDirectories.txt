@@ -1,3 +1,0 @@
-C:/Users/Xiakai Pan/Desktop/CS/UCB_CS/CS61C_SP2015/week4_day38..40/hw2_starter_hw1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-C:/Users/Xiakai Pan/Desktop/CS/UCB_CS/CS61C_SP2015/week4_day38..40/hw2_starter_hw1/cmake-build-debug/CMakeFiles/hw2_starter_hw1.dir
-C:/Users/Xiakai Pan/Desktop/CS/UCB_CS/CS61C_SP2015/week4_day38..40/hw2_starter_hw1/cmake-build-debug/CMakeFiles/edit_cache.dir
