@@ -1,0 +1,92 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../CUnit-2.1-3/CUnit/Headers/Basic.h
+CUnit.h.in
+../CUnit-2.1-3/CUnit/Headers/CUnit.h.in
+TestDB.h
+../CUnit-2.1-3/CUnit/Headers/TestDB.h
+
+../CUnit-2.1-3/CUnit/Headers/CUError.h
+errno.h
+-
+CUnit.h.in
+../CUnit-2.1-3/CUnit/Headers/CUnit.h.in
+
+../CUnit-2.1-3/CUnit/Headers/CUnit.h.in
+string.h
+-
+math.h
+-
+CUError.h
+../CUnit-2.1-3/CUnit/Headers/CUError.h
+TestDB.h
+../CUnit-2.1-3/CUnit/Headers/TestDB.h
+TestRun.h
+../CUnit-2.1-3/CUnit/Headers/TestRun.h
+
+../CUnit-2.1-3/CUnit/Headers/CUnit_intl.h
+libintl.h
+-
+
+../CUnit-2.1-3/CUnit/Headers/TestDB.h
+setjmp.h
+-
+CUnit.h.in
+../CUnit-2.1-3/CUnit/Headers/CUnit.h.in
+CUError.h
+../CUnit-2.1-3/CUnit/Headers/CUError.h
+
+../CUnit-2.1-3/CUnit/Headers/TestRun.h
+CUnit_intl.h
+../CUnit-2.1-3/CUnit/Headers/CUnit_intl.h
+CUError.h
+../CUnit-2.1-3/CUnit/Headers/CUError.h
+TestDB.h
+../CUnit-2.1-3/CUnit/Headers/TestDB.h
+stdio.h
+-
+
+../unistd.h
+io.h
+-
+process.h
+-
+
+C:/Users/Xiakai Pan/Desktop/CS/UCB_CS/CS61C_SP2015/week4_day38..40/hw2_starter_hw1/beargit.h
+
+C:/Users/Xiakai Pan/Desktop/CS/UCB_CS/CS61C_SP2015/week4_day38..40/hw2_starter_hw1/cunittests.c
+stdio.h
+-
+string.h
+-
+sys/stat.h
+-
+unistd.h
+-
+CUnit-2.1-3/CUnit/Headers/Basic.h
+-
+beargit.h
+C:/Users/Xiakai Pan/Desktop/CS/UCB_CS/CS61C_SP2015/week4_day38..40/hw2_starter_hw1/beargit.h
+util.h
+C:/Users/Xiakai Pan/Desktop/CS/UCB_CS/CS61C_SP2015/week4_day38..40/hw2_starter_hw1/util.h
+
+C:/Users/Xiakai Pan/Desktop/CS/UCB_CS/CS61C_SP2015/week4_day38..40/hw2_starter_hw1/util.h
+stdlib.h
+-
+stdarg.h
+-
+stdio.h
+-
+unistd.h
+-
+sys/stat.h
+-
+string.h
+-
+
