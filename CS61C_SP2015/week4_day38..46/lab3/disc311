@@ -1,0 +1,49 @@
+	.file	"disc311.c"
+	.text
+	.def	__main;	.scl	2;	.type	32;	.endef
+	.globl	main
+	.def	main;	.scl	2;	.type	32;	.endef
+	.seh_proc	main
+main:
+	pushq	%rbp
+	.seh_pushreg	%rbp
+	movq	%rsp, %rbp
+	.seh_setframe	%rbp, 0
+	subq	$64, %rsp
+	.seh_stackalloc	64
+	.seh_endprologue
+	call	__main
+	movl	$0, -4(%rbp)
+	movl	$1819043144, -23(%rbp)
+	movw	$8559, -19(%rbp)
+	movb	$0, -17(%rbp)
+	movl	$7, %ecx
+	call	malloc
+	movq	%rax, -16(%rbp)
+.L2:
+	movl	-4(%rbp), %eax
+	cltq
+	movq	-16(%rbp), %rdx
+	addq	%rax, %rdx
+	movl	-4(%rbp), %eax
+	cltq
+	movzbl	-23(%rbp,%rax), %eax
+	movb	%al, (%rdx)
+	addl	$1, -4(%rbp)
+	movl	-4(%rbp), %eax
+	cltq
+	movzbl	-23(%rbp,%rax), %eax
+	testb	%al, %al
+	jne	.L2
+	movl	-4(%rbp), %eax
+	cltq
+	movq	-16(%rbp), %rdx
+	addq	%rdx, %rax
+	movb	$0, (%rax)
+	movl	$0, %eax
+	addq	$64, %rsp
+	popq	%rbp
+	ret
+	.seh_endproc
+	.ident	"GCC: (x86_64-posix-seh-rev0, Built by MinGW-W64 project) 8.1.0"
+	.def	malloc;	.scl	2;	.type	32;	.endef

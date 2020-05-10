@@ -1,0 +1,1 @@
+The lab3 files are not avaliable. After linux mips-gcc toolchain has been set up, the exchange between *.c and *.s is still difficult to master. Maybe later. So does Disc03.
